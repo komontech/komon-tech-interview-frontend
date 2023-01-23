@@ -1,3 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input {
+    @apply font-normal text-base py-2 px-4 outline-none;
+  }
+  
+  p{
+    @apply font-normal text-base text-lighttext;
+  }
+  h5{
+    @apply font-normal text-base text-[#101828];
+  }
+  h3{
+    @apply font-normal text-2xl text-[#101828];
+  }
+  span{
+    @apply font-normal text-sm text-lighttext;
+  }
+  button{
+    @apply font-normal text-sm text-white py-2 px-4 bg-blue-600 rounded-md;
+  }
+}
+
+@layer components {
+  .button{
+    @apply font-normal text-sm text-white py-2 px-4 bg-blue-600 rounded-md;
+  }
+  .menu_link {
+    @apply flex gap-3 items-center font-normal text-base text-[#344054] px-3 py-2 w-full rounded-md;
+  }
+  .menu_link__active {
+    @apply flex gap-3 items-center font-normal text-base text-[#101828] px-3 py-2 bg-[#F9FAFB] w-full rounded-md;
+  }
+  .header-text {
+    @apply  font-bold text-[30px] text-[#101828] ;
+  }
+  .header-tab {
+    @apply  font-bold text-[18px] text-[#101828] ;
+  }
+  .input-design {
+    background: #ffffff;
+    border: 1px solid #d0d5dd;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+  .checkbox, .radio, .switch {
+    @apply inline-flex items-center cursor-pointer relative;
+  }
+
+  .checkbox input[type=checkbox], .radio input[type=radio], .switch input[type=checkbox] {
+    @apply absolute left-0 opacity-0 -z-less;
+  }
+
+  .checkbox input[type=checkbox]+.check, .radio input[type=radio]+.check, .switch input[type=checkbox]+.check {
+    @apply border-gray-700 border transition-colors duration-200 ;
+  }
+
+  .checkbox input[type=checkbox]:focus+.check, .radio input[type=radio]:focus+.check, .switch input[type=checkbox]:focus+.check {
+    @apply ring ring-blue-700;
+  }
+
+  .checkbox input[type=checkbox]+.check, .radio input[type=radio]+.check {
+    @apply block w-5 h-5;
+  }
+
+  .checkbox input[type=checkbox]+.check {
+    @apply rounded;
+  }
+
+  .switch input[type=checkbox]+.check {
+    @apply flex items-center shrink-0 w-12 h-6 p-0.5 bg-gray-200;
+  }
+
+  .radio input[type=radio]+.check, .switch input[type=checkbox]+.check, .switch input[type=checkbox]+.check:before {
+    @apply rounded-full;
+  }
+
+  .checkbox input[type=checkbox]:checked+.check, .radio input[type=radio]:checked+.check {
+    @apply bg-no-repeat bg-center border-4;
+  }
+
+  .checkbox input[type=checkbox]:checked+.check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Cpath style='fill:%23fff' d='M 0.04038059,0.6267767 0.14644661,0.52071068 0.42928932,0.80355339 0.3232233,0.90961941 z M 0.21715729,0.80355339 0.85355339,0.16715729 0.95961941,0.2732233 0.3232233,0.90961941 z'%3E%3C/path%3E%3C/svg%3E");
+  }
+
+  .radio input[type=radio]:checked+.check {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z' /%3E%3C/svg%3E");
+  }
+
+  .switch input[type=checkbox]:checked+.check, .checkbox input[type=checkbox]:checked+.check, .radio input[type=radio]:checked+.check {
+    @apply bg-blue-600 border-blue-600;
+  }
+
+  .switch input[type=checkbox]+.check:before {
+    content: '';
+    @apply block w-5 h-5 bg-white border border-gray-700;
+  }
+
+  .switch input[type=checkbox]:checked+.check:before {
+    transform: translate3d(110%, 0 ,0);
+    @apply border-blue-600;
+  }
+}
+
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
