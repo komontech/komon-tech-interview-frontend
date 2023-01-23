@@ -1,6 +1,6 @@
 import { connectionState } from "@/store";
-import { useSetAtom } from "jotai";
 import axios from "axios";
+import { useSetAtom } from "jotai";
 import { useState } from "react";
 
 export const useFakeAuth = () => {
@@ -12,7 +12,6 @@ export const useFakeAuth = () => {
             method: "GET"
         })
         .then((response: any) => {
-            console.log(response)
             const authUser ={
                 name: 'henry okafor',
                 connection: true,
