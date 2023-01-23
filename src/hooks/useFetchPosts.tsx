@@ -44,9 +44,7 @@ export const useListOfPosts = () => {
       const results = data.filter((item: DataType) => {
         return (
           item.name.toLowerCase().startsWith(query.toLowerCase()) ||
-          item.post.toLowerCase().startsWith(query.toLowerCase()) ||
-          item.image.toLowerCase().startsWith(query.toLowerCase()) ||
-          item.avatar.toLowerCase().startsWith(query.toLowerCase())
+          item.post.toLowerCase().startsWith(query.toLowerCase()) 
         );
       });
       setItems(results);
