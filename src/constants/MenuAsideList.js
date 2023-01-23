@@ -1,6 +1,6 @@
 export const menuAsideList = [
   {
-    href: '/',
+    href: '/connections',
     icon: (
       <svg
         xmlns='http://www.w3.org/2000/svg'
@@ -20,7 +20,7 @@ export const menuAsideList = [
     label: 'Connections',
   },
   {
-    href: '/content',
+    href: '/contents',
     label: 'Contents',
     icon: (
       <svg

@@ -10,7 +10,7 @@ interface Props {
 const ConnectionDropdown: NextComponentType<NextPageContext, {}, Props> = (
   props: Props
 ) => {
-  const [open, isOpen] = useState(true);
+  const [open, isOpen] = useState(false);
   const connectState = useAtomValue(connectionState);
   const setConnection = useSetAtom(connectionState);
 
@@ -52,11 +52,11 @@ const ConnectionDropdown: NextComponentType<NextPageContext, {}, Props> = (
           : 'Connect to social'}
       </button>
       {open && connectState && (
-        <div className='flex flex-col gap-2 shadow absolute -left-[100px] mt-2 border p-3 rounded-md divide-y'>
+        <div className='flex flex-col shadow absolute -left-[100px] mt-2 py-2 border px-3 rounded-md divide-y'>
           {socialList.map((social, i) => (
             <div
               key={i}
-              className='flex items-center justify-between gap-4  py-1 '
+              className='flex items-center justify-between gap-6  py-2 '
             >
               <h5>{social.name}</h5>
 

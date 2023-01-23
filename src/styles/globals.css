@@ -212,6 +212,10 @@ a {
   text-decoration: none;
 }
 
+#logo {
+  height: 50px;
+  width: 100px;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

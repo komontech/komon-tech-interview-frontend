@@ -1,12 +1,13 @@
 
 import Link from 'next/link';
 import { menuAsideList } from '../constants/MenuAsideList';
+import Logo from '@/components/Logo';
 
 const MenuAside = () => {
   return (
     
     <aside className='max-w-[279px] p-[32px] min-h-screen relative'>
-      <input placeholder='Search' className='input-design' />
+      <Logo />
       <div className='flex flex-col my-6 gap-3 w-full'>
         {menuAsideList.map((menu, i) => (
           <Link key={i} href={menu.href}>

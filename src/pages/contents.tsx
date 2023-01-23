@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LayoutComponent>
-            <h3>Komon</h3>
+            <ContentContainer/>
         </LayoutComponent>
     </>
   )
