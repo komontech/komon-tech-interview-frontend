@@ -9,10 +9,9 @@ const ContentContainer = () => {
   return (
     <div className='w-full'>
       <PageHeader
-        heading={'Connections'}
-        info={'Connect to your fav social and start importing into Komon.'}
-        connections={<ConnectionDropdown connection={false} />}
-      />
+        heading={'Contents'}
+        info={'Your contents fron connected socials, you can edit and importing into Komon.'}
+         />
       {false ? <div></div> : <EmptyComponent />}
     </div>
   );

@@ -13,6 +13,7 @@ const ConnectionPage: NextPage = () => {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <LayoutComponent>
+    
           <ConnectionContainer/>
       </LayoutComponent>
   </>

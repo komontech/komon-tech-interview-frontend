@@ -3,16 +3,14 @@ import { ReactNode } from "react";
 
 interface HeaderProp {heading: string,info: string, connections?: ReactNode }
 
-export const PageHeader = ({heading, info, connections}: HeaderProp) => {
+export const PageHeader = ({heading, info}: HeaderProp) => {
     return (
         <div className='flex justify-between gap-2'>
         <div className='flex flex-col gap-2'>
             <h2 className='header-text'>{heading}</h2>
             <p>{info}</p>
         </div>
-        <div>
-            {connections}
-        </div>
+      
         </div>
     );
 };
