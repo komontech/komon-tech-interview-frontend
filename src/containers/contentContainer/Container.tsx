@@ -1,14 +1,16 @@
+import ConnectionOffline from '@/components/ConnectionOffline';
 import { PageHeader } from '@/components/PageHeader';
+import { useListOfPosts } from '@/hooks/useFetchPosts';
 import { connectionState } from '@/store';
 import { useAtomValue } from 'jotai';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { ContentCardsView } from './ContentView';
-import { useListOfPosts } from '@/hooks/useFetchPosts';
 import SearchInput from './SearchInput';
 
 const ContentContainer = () => {
   const connectionData = useAtomValue(connectionState);
-  const { items, fetchMoreData, hasMore, loading, query, setQuery } = useListOfPosts();
+  const { items, fetchMoreData, hasMore, loading, query, setQuery } =
+    useListOfPosts();
 
   if (loading) {
     return <div>Loading...</div>;
@@ -21,15 +23,21 @@ const ContentContainer = () => {
           'Your contents fron connected socials, you can edit and importing into Komon.'
         }
       />
-      <SearchInput setQuery={setQuery} query={query} />
-      <InfiniteScroll
-        dataLength={connectionData?.posts.length ?? 0}
-        height={1000}
-        hasMore={hasMore}
-        fetchMoreData={fetchMoreData}
-      >
-        <ContentCardsView data={items} />
-      </InfiniteScroll>
+      {connectionData.connection ? (
+        <>
+          <SearchInput setQuery={setQuery} query={query} />
+          <InfiniteScroll
+            dataLength={connectionData?.posts.length ?? 0}
+            height={1000}
+            hasMore={hasMore}
+            fetchMoreData={fetchMoreData}
+          >
+            <ContentCardsView data={items} />
+          </InfiniteScroll>
+        </>
+      ) : (
+        <ConnectionOffline />
+      )}
     </div>
   );
 };
