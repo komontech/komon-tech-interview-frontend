@@ -1,6 +1,8 @@
 import type { NextComponentType, NextPageContext } from "next";
+import { ReactNode } from "react";
 
 import InfiniteScroll from 'react-infinite-scroll-component';
+declare type Fn = () => any;
 
 interface Props {
   dataLength:number;
