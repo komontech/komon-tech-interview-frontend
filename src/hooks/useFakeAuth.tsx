@@ -1,15 +1,17 @@
 import { connectionState } from "@/store";
 import { useSetAtom } from "jotai";
 import axios from "axios";
+import { useState } from "react";
 
 export const useFakeAuth = () => {
     const setConnection = useSetAtom(connectionState);
+    const [loading, isLoading] = useState(false)
     const authLogin = async()=> {
+        isLoading(true)
         await axios.get(`https://63ce099f6d27349c2b66a67e.mockapi.io/api/v1/post`,{
             method: "GET"
         })
         .then((response: any) => {
-           const ob = response
             console.log(response)
             const authUser ={
                 name: 'henry okafor',
@@ -17,10 +19,11 @@ export const useFakeAuth = () => {
                 social: 'twitter'
             }
             setConnection({...authUser, posts: response.data });
-        });
+        }).catch((err)=>console.log(err.message))
+        .finally(()=> isLoading(false))
     }
    
     return (
-       {authLogin}
+       {authLogin, loading}
     );
 };

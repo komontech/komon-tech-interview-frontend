@@ -12,12 +12,13 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
 ) => {
   const connectState = useAtomValue(connectionState);
   const setConnection = useSetAtom(connectionState);
-  const { authLogin } = useFakeAuth();
+  const { authLogin, loading } = useFakeAuth();
 
   console.log(connectState);
 
   console.log(connectState);
   const socialList: {
+    id:number;
     name: string;
     icon: string;
     info: {
@@ -25,6 +26,7 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
     };
   }[] = [
     {
+        id:0,
       name: 'facebook',
       icon: 'fa-facebook',
       info: {
@@ -32,6 +34,7 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
       },
     },
     {
+        id:1,
       name: 'instagram',
       icon: 'fa-instagram',
       info: {
@@ -39,6 +42,7 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
       },
     },
     {
+        id:2,
       name: 'twitter',
       icon: 'fa-twitter',
       info: {
@@ -46,15 +50,15 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
       },
     },
   ];
-
+console.log(loading,'kk')
   return (
     <>
       <PageHeader
         heading={'Connections'}
         info={'Connect to your fav social and start importing into Komon.'}
       />
-      <div className='grid mt-40 md:grid-cols-2 grid-cols-1 items-start'>
-        <div className='flex flex-col shadow  mt-2 py-2 border px-3 rounded-md divide-y  '>
+      <div className='grid mt-20 md:grid-cols-2 grid-cols-1 items-start gap-8'>
+        <div className='flex flex-col shadow  py-2 border px-3 rounded-md divide-y  '>
           {socialList.map((social, i) => (
             <div
               key={i}
@@ -62,30 +66,32 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
             >
               <h5 className='capitalize'>{social.name}</h5>
 
-              {social.name === connectState.social ? (
+              {social.name === connectState.social && social.id === i  ? (
                 <button
                   type='button'
                   className='button !text-xs !bg-green-400/10 !text-green-400'
                   disabled
                 >
-                  Connected
+                {'Connected'}
                 </button>
               ) : (
                 <button
                   type='button'
-                  className='button !text-xs !bg-sky-400/10 !text-sky-400'
+                  disabled={loading}
+                  className={`button !text-xs  !bg-sky-400/10 !text-sky-400`}
                   onClick={() => {
                     authLogin();
                   }}
                 >
-                  Connect
+                Connect
                 </button>
               )}
             </div>
           ))}
+          <button type='button' className='button w-max'>Add new connection</button>
         </div>
         {connectState.connection && (
-          <main className='grid grid-cols-1 gap-3 m-4 border border-green-500 rounded-md'>
+          <main className='grid grid-cols-1 gap-3  border border-green-500 rounded-md'>
             <div className='flex items-center justify-between bg-green-500/10 py-3 px-2 rounded-t-md'>
 
             <p className='text-green-400'>Connection details</p>
@@ -93,18 +99,22 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
             </div>
             <div className='flex flex-col px-2'>
               <p>Name</p>
-              <p className='text'>{connectState.name}</p>
+              <p className='text  bg-slate-400/5 rounded-md py-4 px-2'>{connectState.name}</p>
             </div>
             <div className='flex flex-col px-2'>
               <p>Social type</p>
-              <p className='text capitalize'>{connectState.social}</p>
+              <p className='text capitalize  bg-slate-400/5 rounded-md py-4 px-2'>{connectState.social}</p>
             </div>
             <div className='flex flex-col px-2 mb-2'>
               <p>Posts</p>
-              <p className='text capitalize bg-slate-400/10 rounded-md p-4'>{connectState.posts.length} posts</p>
-              <Link  href='/contents'>
-              view posts
+              <div className='flex items-center  bg-slate-400/5 rounded-md py-4 px-2 justify-between'>
+
+              <p className='w-full text capitalize'>{connectState.posts.length} posts  </p>
+              <Link  href='/contents' className='text border border-blue-400 bg-blue-400/10 text-blue-400 rounded-full px-4 py-1'>
+              view
               </Link>
+              </div>
+             
             </div>
 
           </main>

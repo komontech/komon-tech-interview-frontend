@@ -5,7 +5,7 @@ export const connectionState = atom({
     auth: null,
     social: '',
     name: '',
-    posts:[]
+    posts: []
 
 })
    const connectionSt = atom((get) => get(connectionState))
