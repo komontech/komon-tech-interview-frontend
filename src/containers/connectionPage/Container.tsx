@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
+import { useFakeAuth } from "@/hooks/useFakeAuth";
 import { connectionState } from "@/store";
 import { useAtomValue, useSetAtom } from "jotai";
 import type { NextComponentType, NextPageContext } from "next";
@@ -10,7 +11,11 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
 ) => {
     const connectState = useAtomValue(connectionState);
     const setConnection = useSetAtom(connectionState);
+const {authLogin} =useFakeAuth()
 
+console.log(connectState)
+
+console.log(connectState)
     const socialList: {
         name: string;
         icon: string;
@@ -19,21 +24,21 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
         };
       }[] = [
         {
-          name: 'Facebook',
+          name: 'facebook',
           icon: 'fa-facebook',
           info: {
             social: 'facebook',
           },
         },
         {
-          name: 'Instagram',
+          name: 'instagram',
           icon: 'fa-instagram',
           info: {
             social: 'instagram',
           },
         },
         {
-          name: 'Twitter',
+          name: 'twitter',
           icon: 'fa-twitter',
           info: {
             social: 'twitter',
@@ -54,16 +59,13 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
               key={i}
               className='flex items-center justify-between gap-6  py-2 '
             >
-              <h5>{social.name}</h5>
+              <h5 className="capitalize">{social.name}</h5>
 
-              {social.name === connectState.social ? (
+              {social.name === connectState.auth?.social ? (
                 <button
                   type='button'
                   className='button !text-xs !bg-green-400/10 !text-green-400'
-                  onClick={() => {
-                    setConnection({ connection: true, ...social.info });
-                  
-                  }}
+                 disabled
                 >
                   Connected
                 </button>
@@ -72,11 +74,10 @@ const ConnectionContainer: NextComponentType<NextPageContext, {}, Props> = (
                   type='button'
                   className='button !text-xs !bg-sky-400/10 !text-sky-400'
                   onClick={() => {
-                    setConnection({ connection: true, ...social.info });
-              
+                     authLogin()
                   }}
                 >
-                  Connect
+                  Connect 
                 </button>
               )}
             </div>

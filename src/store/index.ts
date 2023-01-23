@@ -2,7 +2,8 @@ import { atom } from "jotai"
 
 export const connectionState = atom({
     connection: false,
-    social: ''
+    auth: null,
+    posts: []
 
 })
    const connectionSt = atom((get) => get(connectionState))

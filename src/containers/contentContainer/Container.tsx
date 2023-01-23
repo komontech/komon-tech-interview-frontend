@@ -1,4 +1,4 @@
-import ConnectionDropdown from '@/components/ConnectionDropdown';
+
 import { EmptyComponent } from '@/components/EmptyComponent';
 import { PageHeader } from '@/components/PageHeader';
 import { connectionState } from '@/store';
