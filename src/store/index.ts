@@ -10,3 +10,4 @@ export const editModalState = atom({
     open: false,
    data: {}
 })
+export const pollState = atom(false)

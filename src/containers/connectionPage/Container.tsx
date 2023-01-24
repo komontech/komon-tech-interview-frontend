@@ -88,6 +88,7 @@ console.log(loading,'kk')
               )}
             </div>
           ))}
+          {loading&&<p className='italic !text-red-500 !text-xs py-2'>Loading...</p>}
           <button type='button' className='button w-max'>Add new connection</button>
         </div>
         {connectState.connection && (
