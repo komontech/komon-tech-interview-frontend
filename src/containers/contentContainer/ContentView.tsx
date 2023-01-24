@@ -10,6 +10,7 @@ export const ContentCardsView = ({ data }: { data: any }) => {
           src={item.image}
           title={item.name}
           description={item.post}
+       id={i}
         />
       ))}
     </div>

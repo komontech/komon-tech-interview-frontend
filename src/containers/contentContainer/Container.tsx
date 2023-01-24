@@ -1,8 +1,10 @@
 import ConnectionOffline from '@/components/ConnectionOffline';
+
 import { PageHeader } from '@/components/PageHeader';
 import { useListOfPosts } from '@/hooks/useFetchPosts';
 import { connectionState } from '@/store';
 import { useAtomValue } from 'jotai';
+import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { ContentCardsView } from './ContentView';
 import SearchInput from './SearchInput';
@@ -11,6 +13,7 @@ const ContentContainer = () => {
   const connectionData = useAtomValue(connectionState);
   const { items, fetchMoreData, hasMore, loading, query, setQuery } =
     useListOfPosts();
+    
 
   if (loading) {
     return <div>Loading...</div>;
@@ -32,12 +35,14 @@ const ContentContainer = () => {
             hasMore={hasMore}
             fetchMoreData={fetchMoreData}
           >
-            <ContentCardsView data={items} />
+            <ContentCardsView data={items}  />
           </InfiniteScroll>
         </>
       ) : (
         <ConnectionOffline />
       )}
+
+  
     </div>
   );
 };

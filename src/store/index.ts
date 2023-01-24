@@ -6,3 +6,7 @@ export const connectionState = atom({
     name: '',
     posts: []
 })
+export const editModalState = atom({
+    open: false,
+   data: {}
+})
