@@ -28,7 +28,11 @@ const ContentContainer = () => {
       />
       {connectionData.connection ? (
         <>
+        <div className='flex justify-between gap-4'>
+
           <SearchInput setQuery={setQuery} query={query} />
+          <button>Create poll</button>
+        </div>
           <InfiniteScroll
             dataLength={connectionData?.posts.length ?? 0}
             height={1000}
