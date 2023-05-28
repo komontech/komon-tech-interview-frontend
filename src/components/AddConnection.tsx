@@ -7,7 +7,10 @@ const AddConnection = () => {
 
   return (
     <div>
-      <button className="outline p-5" onClick={() => setIsOpen(true)}>
+      <button
+        className="outline px-5 py-2 w-32 hover:bg-white hover:text-black"
+        onClick={() => setIsOpen(true)}
+      >
         Add connection
       </button>
       <AddConnectionModal
