@@ -1,19 +1,33 @@
-import { Item, ModalProps } from "@/types/intex";
+import { Connection, Item, ModalProps } from "@/types/intex";
 import { useState } from "react";
+import { followerCount, images, postCount } from "../data/newConnection.json";
+import { useRouter } from "next/navigation";
 
 const AddConnectionModal = (props: ModalProps) => {
+  const router = useRouter();
   const { isOpen, onClose } = props;
   const [name, setName] = useState("");
   const [platform, setPlatform] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const newItem: Item = {
-      id: Date.now(),
-      name,
+    const newItem: Connection = {
+      id: Date.now().toString(),
+      connectionName: name,
       platform,
+      // mocking the data that is supposed to be fetched from the corresponding platform
+      followerCount,
+      postCount,
+      images,
     };
-    //onSubmit(newItem); // POST request
+    await fetch("http://localhost:3001/connections", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(newItem),
+    });
+    router.refresh();
     onClose();
   };
 
@@ -41,7 +55,7 @@ const AddConnectionModal = (props: ModalProps) => {
               </label>
               <select
                 id="platform"
-                className="border border-gray-300 rounded px-3 py-2 mb-4 w-full"
+                className="border border-gray-300 rounded px-3 py-2 mb-4 w-full bg-black"
                 value={platform}
                 onChange={(e) => setPlatform(e.target.value)}
               >
@@ -49,6 +63,7 @@ const AddConnectionModal = (props: ModalProps) => {
                 <option value="Instagram">Instagram</option>
                 <option value="Twitter">Twitter</option>
                 <option value="YouTube">YouTube</option>
+                <option value="LinkedIn">LinkedIn</option>
               </select>
 
               <label htmlFor="name" className="block mb-2">
