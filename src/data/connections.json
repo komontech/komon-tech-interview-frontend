@@ -1,0 +1,85 @@
+{
+  "connections": [
+    {
+      "id": "1",
+      "platform": "Instagram",
+      "connectionName": "My Instagram Account",
+      "followerCount": 10000,
+      "postCount": 500,
+      "images": [
+        {
+          "url": "https://loremflickr.com/320/240/cat?random=1"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/cat?random=2"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/cat?random=3"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/cat?random=4"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/cat?random=5"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/cat?random=6"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "platform": "Twitter",
+      "connectionName": "My Twitter Account",
+      "followerCount": 5000,
+      "postCount": 1000,
+      "images": [
+        {
+          "url": "https://loremflickr.com/320/240/dog?random=1"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/dog?random=2"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/dog?random=3"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/dog?random=4"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/dog?random=5"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/dog?random=6"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "platform": "YouTube",
+      "connectionName": "My YouTube Channel",
+      "subscriberCount": 20000,
+      "videoCount": 100,
+      "images": [
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=1"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=2"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=3"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=4"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=5"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=6"
+        }
+      ]
+    }
+  ]
+}
