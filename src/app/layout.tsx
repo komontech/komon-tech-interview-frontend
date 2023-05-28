@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import "./globals.css";
+import { ProfileContextProvider } from "@/context/profile.context";
 
 export const metadata = {
   title: "Dashboard - social media connections",
@@ -15,8 +16,10 @@ export default function RootLayout({
     <html lang="en">
       <body className="m-3 p-5">
         <main className="flex flex-col items-center ">
-          <Header />
-          {children}
+          <ProfileContextProvider>
+            <Header />
+            {children}
+          </ProfileContextProvider>
         </main>
       </body>
     </html>

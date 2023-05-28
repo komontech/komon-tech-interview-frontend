@@ -13,6 +13,19 @@ export const getData = async () => {
   return connections;
 };
 
+export const getConnectionById = async (id: String) => {
+  const response: Response | void = await fetch(
+    `http://localhost:3001/connections/${id}`,
+    {
+      //cache: false,
+    }
+  ).catch((error) => console.error(error));
+
+  const connection = response ? await response.json() : {};
+
+  return connection;
+};
+
 export const addConnection = async (item: Connection) => {
   await fetch("http://localhost:3001/connections", {
     method: "POST",
