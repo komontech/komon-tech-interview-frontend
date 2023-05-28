@@ -2,8 +2,8 @@
   "connections": [
     {
       "id": "1",
+      "userName": "insta-pro",
       "platform": "Instagram",
-      "userName": "My Instagram Account",
       "followerCount": 10000,
       "postCount": 500,
       "images": [
@@ -29,8 +29,8 @@
     },
     {
       "id": "2",
+      "userName": "birdie1",
       "platform": "Twitter",
-      "userName": "My Twitter Account",
       "followerCount": 5000,
       "postCount": 1000,
       "images": [
@@ -55,16 +55,38 @@
       ]
     },
     {
+      "id": "3",
       "userName": "super-youtuber",
       "platform": "YouTube",
-      "id": "3"
+      "followerCount": 12400,
+      "postCount": 240,
+      "images": [
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=1"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=2"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=3"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=4"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=5"
+        },
+        {
+          "url": "https://loremflickr.com/320/240/bird?random=6"
+        }
+      ]
     },
     {
-      "id": "1685269981010",
-      "userName": "Linkedinka",
+      "id": "1685283146740",
+      "userName": "linkedinka",
       "platform": "LinkedIn",
-      "followerCount": 11000,
-      "postCount": 800,
+      "followerCount": 462,
+      "postCount": 18,
       "images": [
         {
           "url": "https://loremflickr.com/320/240/tree?random=1"

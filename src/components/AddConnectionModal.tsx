@@ -8,11 +8,14 @@ const AddConnectionModal = (props: ModalProps) => {
   const router = useRouter();
   const {
     editing,
-    id,
+    id = "",
     isOpen,
     onClose,
-    platform: prevPlatform,
-    userName,
+    platform: prevPlatform = "",
+    userName = "",
+    followerCount: prevFollowerCount = 0,
+    postCount: prevPostCount = 0,
+    images: prevImages = [],
   } = props;
   const [name, setName] = useState(userName);
   const [platform, setPlatform] = useState(prevPlatform);
@@ -24,9 +27,11 @@ const AddConnectionModal = (props: ModalProps) => {
       userName: name,
       platform,
       // mocking the data that is supposed to be fetched from the corresponding platform
-      followerCount,
-      postCount,
-      images,
+      followerCount: editing
+        ? prevFollowerCount
+        : Math.round(Math.random() * 1500),
+      postCount: editing ? prevPostCount : Math.round(Math.random() * 100),
+      images: editing ? prevImages : images,
     };
     editing ? await updateConnection(newItem) : await addConnection(newItem);
     router.refresh();
@@ -81,11 +86,11 @@ const AddConnectionModal = (props: ModalProps) => {
                 onChange={(e) => setName(e.target.value)}
               />
 
-              <div className="flex justify-end">
+              <div className="flex justify-end gap-5 justify-between">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="border border-gray-300 px-4 py-2 rounded"
+                  className="border border-gray-300 px-4 py-2 rounded  bg-red-400"
                 >
                   Cancel
                 </button>

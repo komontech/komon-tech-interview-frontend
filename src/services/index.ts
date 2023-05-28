@@ -23,19 +23,14 @@ export const addConnection = async (item: Connection) => {
   }).catch((error) => console.error(error));
 };
 
-export const updateConnection = async ({
-  id,
-  userName,
-  platform,
-}: Connection) => {
-  const response = await fetch(`http://localhost:3001/connections/${id}`, {
+export const updateConnection = async (item: Connection) => {
+  const response = await fetch(`http://localhost:3001/connections/${item.id}`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
     },
     body: JSON.stringify({
-      userName,
-      platform,
+      ...item,
     }),
   }).catch((error) => console.error(error));
 

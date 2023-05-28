@@ -14,9 +14,6 @@ const AddConnection = () => {
         editing={false}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        userName=""
-        id=""
-        platform=""
       />
     </div>
   );

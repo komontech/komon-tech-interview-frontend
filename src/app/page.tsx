@@ -6,16 +6,13 @@ const Home = async () => {
   const connections = await getData();
 
   return (
-    <main className="flex flex-col items-center justify-between ">
-      <div className="w-full px-20 ">
-        <h1 className="h1">Social media connections dashboard</h1>
-        <div className="flex justify-end">
-          <AddConnection />
-        </div>
-
-        <ConnectionsList connections={connections} />
+    <div className="w-full px-20 ">
+      <div className="flex justify-end">
+        <AddConnection />
       </div>
-    </main>
+
+      <ConnectionsList connections={connections} />
+    </div>
   );
 };
 

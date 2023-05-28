@@ -17,9 +17,12 @@ export interface ModalProps {
   editing: boolean;
   isOpen: boolean;
   onClose: () => void;
-  userName: string;
-  id: string;
-  platform: string;
+  id?: string;
+  platform?: string;
+  userName?: string;
+  followerCount?: number;
+  postCount?: number;
+  images?: { url: string }[];
 }
 
 export interface Item {
