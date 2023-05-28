@@ -58,8 +58,8 @@
       "id": "3",
       "platform": "YouTube",
       "connectionName": "My YouTube Channel",
-      "subscriberCount": 20000,
-      "videoCount": 100,
+      "followerCount": 20000,
+      "postCount": 100,
       "images": [
         {
           "url": "https://loremflickr.com/320/240/bird?random=1"

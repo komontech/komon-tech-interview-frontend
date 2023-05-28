@@ -1,16 +1,5 @@
+import { Item, ModalProps } from "@/types/intex";
 import { useState } from "react";
-
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  //onSubmit: (item: Item) => void;
-}
-
-interface Item {
-  id: number;
-  name: string;
-  platform: string;
-}
 
 const AddConnectionModal = (props: ModalProps) => {
   const { isOpen, onClose } = props;

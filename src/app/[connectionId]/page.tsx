@@ -1,24 +1,22 @@
 import Image from "next/image";
-import MOCK from "../../data/connections.json";
+import { getData } from "../page";
+import { Connection, ConnectionDetailsProps } from "@/types/intex";
 
-interface ConnectionDetailsProps {
-  params: {
-    connectionId: string;
-  };
-}
-
-const ConnectionDetails = (props: ConnectionDetailsProps) => {
+const ConnectionDetails = async (props: ConnectionDetailsProps) => {
+  const connections = await getData();
+  console.log(connections);
   const {
     params: { connectionId },
   } = props;
+
   const { connectionName, id, images, followerCount, platform, postCount } =
-    MOCK.connections?.find((item) => item?.id === connectionId) || {};
+    connections?.find((item: Connection) => item?.id === connectionId) || {};
   return (
     <div>
       <h2>Details of connection: {connectionName}</h2>
       <p>{platform}</p>
       <div className="flex gap-2 flex-wrap py-3 px-2">
-        {images?.map((img) => {
+        {images?.map((img: { url: string }) => {
           return (
             <Image
               key={id + img.url}
