@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Connection } from "@/types/intex";
+import { Connection } from "@/types";
 import ConnectionItem from "./ConnectionItem";
 
 const ConnectionsList = ({ connections }: { connections: Connection[] }) => {

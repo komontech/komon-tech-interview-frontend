@@ -1,32 +1,34 @@
-import { Connection, Item, ModalProps } from "@/types/intex";
+import { Connection, Item, ModalProps } from "@/types";
 import { useState } from "react";
 import { followerCount, images, postCount } from "../data/newConnection.json";
 import { useRouter } from "next/navigation";
+import { addConnection, updateConnection } from "@/services";
 
 const AddConnectionModal = (props: ModalProps) => {
   const router = useRouter();
-  const { isOpen, onClose } = props;
-  const [name, setName] = useState("");
-  const [platform, setPlatform] = useState("");
+  const {
+    editing,
+    id,
+    isOpen,
+    onClose,
+    platform: prevPlatform,
+    userName,
+  } = props;
+  const [name, setName] = useState(userName);
+  const [platform, setPlatform] = useState(prevPlatform);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newItem: Connection = {
-      id: Date.now().toString(),
-      connectionName: name,
+      id: editing ? id : Date.now().toString(),
+      userName: name,
       platform,
       // mocking the data that is supposed to be fetched from the corresponding platform
       followerCount,
       postCount,
       images,
     };
-    await fetch("http://localhost:3001/connections", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(newItem),
-    });
+    editing ? await updateConnection(newItem) : await addConnection(newItem);
     router.refresh();
     onClose();
   };
@@ -36,10 +38,12 @@ const AddConnectionModal = (props: ModalProps) => {
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed top-0 left-0 w-full h-full  bg-black bg-opacity-70">
         <div className="relative w-4/5 my-6 mx-auto max-w-3xl z-10">
           {/*content*/}
-          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-black border-2 border-white outline-none focus:outline-none">
+          <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-black border-2 border-white outline-none focus:outline-none">
             {/*header*/}
             <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-              <h3 className="text-3xl font-semibold ">Add connection</h3>
+              <h3 className="text-3xl font-semibold ">
+                {editing ? "Edit connection" : "Add connection"}
+              </h3>
               <button
                 className="p-1 ml-auto bg-transparent border-0  opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                 onClick={onClose}
@@ -49,7 +53,7 @@ const AddConnectionModal = (props: ModalProps) => {
                 </span>
               </button>
             </div>
-            <form className="p-5" onSubmit={handleSubmit}>
+            <form className="p-5 " onSubmit={handleSubmit}>
               <label htmlFor="platform" className="block mb-2">
                 Platform:
               </label>
@@ -67,12 +71,12 @@ const AddConnectionModal = (props: ModalProps) => {
               </select>
 
               <label htmlFor="name" className="block mb-2">
-                Name:
+                Username:
               </label>
               <input
                 type="text"
                 id="name"
-                className="border border-gray-300 rounded px-3 py-2 mb-4 w-full"
+                className="border border-gray-300 rounded px-3 py-2 mb-4 w-full bg-black"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -89,7 +93,7 @@ const AddConnectionModal = (props: ModalProps) => {
                   type="submit"
                   className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
                 >
-                  Add
+                  {editing ? "Save changes" : "Add"}
                 </button>
               </div>
             </form>

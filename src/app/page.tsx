@@ -1,18 +1,6 @@
+import { getData } from "@/services";
 import ConnectionsList from "../components/ConnectionsList";
 import AddConnection from "@/components/AddConnection";
-
-export async function getData() {
-  const response: Response | void = await fetch(
-    "http://localhost:3001/connections",
-    {
-      //cache: false,
-    }
-  ).catch((error) => console.error(error));
-
-  const connections = response ? await response.json() : [];
-
-  return connections;
-}
 
 const Home = async () => {
   const connections = await getData();

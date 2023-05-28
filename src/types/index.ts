@@ -1,7 +1,7 @@
 export interface Connection {
   id: string;
   platform: string;
-  connectionName: string;
+  userName: string;
   followerCount: number;
   postCount: number;
   images: { url: string }[];
@@ -14,9 +14,12 @@ export interface ConnectionDetailsProps {
 }
 
 export interface ModalProps {
+  editing: boolean;
   isOpen: boolean;
   onClose: () => void;
-  //onSubmit: (item: Item) => void;
+  userName: string;
+  id: string;
+  platform: string;
 }
 
 export interface Item {

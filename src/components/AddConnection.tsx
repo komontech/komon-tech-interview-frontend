@@ -10,7 +10,14 @@ const AddConnection = () => {
       <button className="outline p-5" onClick={() => setIsOpen(true)}>
         Add connection
       </button>
-      <AddConnectionModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <AddConnectionModal
+        editing={false}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        userName=""
+        id=""
+        platform=""
+      />
     </div>
   );
 };

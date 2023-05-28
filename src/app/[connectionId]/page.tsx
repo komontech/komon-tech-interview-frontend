@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { getData } from "../page";
-import { Connection, ConnectionDetailsProps } from "@/types/intex";
+import { Connection, ConnectionDetailsProps } from "@/types";
 import Link from "next/link";
+import { getData } from "@/services";
 
 const ConnectionDetails = async (props: ConnectionDetailsProps) => {
   const connections = await getData();
@@ -10,7 +10,7 @@ const ConnectionDetails = async (props: ConnectionDetailsProps) => {
     params: { connectionId },
   } = props;
 
-  const { connectionName, id, images, followerCount, platform, postCount } =
+  const { userName, id, images, followerCount, platform, postCount } =
     connections?.find((item: Connection) => item?.id === connectionId) || {};
   return (
     <div>
@@ -20,7 +20,7 @@ const ConnectionDetails = async (props: ConnectionDetailsProps) => {
         </Link>
       </div>
       <section className="my-3 flex flex-col gap-2">
-        <h2>Details of connection: {connectionName}</h2>
+        <h2>Details of connection: {userName}</h2>
         <p>{platform}</p>
         <div className="flex gap-2 flex-wrap py-3 px-2">
           {images?.map((img: { url: string }) => {
@@ -28,7 +28,7 @@ const ConnectionDetails = async (props: ConnectionDetailsProps) => {
               <Image
                 key={id + img.url}
                 src={img.url}
-                alt={connectionName + ": cat picture"}
+                alt={userName + ": cat picture"}
                 width={320}
                 height={240}
               />
