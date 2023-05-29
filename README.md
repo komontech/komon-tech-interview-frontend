@@ -32,7 +32,7 @@ Feel free to check our WebApp to get inspiration. It should be aligned with the 
 
 ## Delivery
 
-Fork this repository into your own Github account and perform all the development there. 
+Create your own Github repo and perform all the development there. 
 
 We will ask you to share this repo with some of our developers in case we need further details.
 Please include several commits while you are progressing. We want to understand  how  you think, as well as your thought process evolution.
